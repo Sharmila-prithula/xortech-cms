@@ -101,7 +101,7 @@
                             </h5>
                             <p>
                                 {!! $blog->content !!}<a class="text-indigo-600 hover-text-indigo-900" target="_self" href="{{URL::to('/'.$blog->slug)}}">
-                                <span class="readMore ">Continue Reading </span>
+                                <span class="readMore ">Continue Reading </span></a>
                             </p>
                         </div>
                     </div>

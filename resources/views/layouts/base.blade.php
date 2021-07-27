@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/media.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @trixassets
     @livewireStyles    
 </head>
@@ -42,7 +43,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#banner">Home </a>
+                        <a class="nav-link active" href="/">Home </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
@@ -58,7 +59,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('bloglist')}}">Blog</a>
+                        <a class="nav-link" href="#blog">Blog</a>
                     </li>
 
                     <li class="nav-item">
@@ -72,6 +73,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" title="Blogs" href="{{ route('admin.blogs')}}">Manage Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" title="Topics" href="{{ route('admin.topics')}}">Topics</a>
                     </li>
                     <form id="logout-form" method="POST" action="{{ route('logout') }}">
                         @csrf
@@ -105,8 +109,10 @@
         </div>
     </nav>
 
-
-    {{ $slot }}
+    @yield('content') 
+    @if( isset($slot) ) 
+        {{ $slot }} 
+    @endif
     <!-- ==============Footer STarts======================================== -->
     <section id="footer">
         <div class="container">
@@ -203,6 +209,12 @@
 <script src="{{ asset('js/slick.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js" integrity="sha512-RtZU3AyMVArmHLiW0suEZ9McadTdegwbgtiQl5Qqo9kunkVg1ofwueXD8/8wv3Af8jkME3DDe3yLfR8HSJfT2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+        $(document).ready(function() {
+            $('.topics').select2();
+        });
+    </script>
 @livewireScripts
 
 </html>

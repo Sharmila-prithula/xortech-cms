@@ -9,7 +9,7 @@
                                 All Blogs
                             </div>
                             <div class="col-md-6">
-                                <a href="{{route('admin.addblogs')}}" class="btn btn-success">Add New Blogs</a>
+                                <a href="{{route('blog.create')}}" class="btn btn-success">Add New Blogs</a>
                             </div>
                         </div>
                     </div>
@@ -24,6 +24,7 @@
                                 <th>Id</th>
                                 <th>Image</th>
                                 <th>Title</th>
+                                <th>Topic</th>
                                 <th>Link</th>
                                 <th>Content</th>
                                 <th>Date</th>
@@ -34,8 +35,13 @@
                             @foreach($blogs as $blog)
                             <tr>
                                 <td>{{ $blog->id }}</td>
-                                <td><img src="{{ asset('images/blogs/'.$blog->image) }}" width="60" /></td>
+                                <td><img src="{{asset('images/blogs/'.$blog->images)}}" width="60" /></td>
                                 <td>{{ $blog->title }}</td>
+                                <td>
+                                    @foreach($blog->topics as $topic)
+                                    <li>{{ $topic->name }} </li>
+                                    @endforeach
+                                </td>
                                 <td><a class="text-indigo-600 hover-text-indigo-900" target="_self" href="{{URL::to('/'.$blog->slug)}}">
                                         {{$blog->slug}}
                                     </a>
@@ -43,7 +49,12 @@
                                 <td>{!! $blog->content !!}</td>
                                 <td>{{$blog->created_at}}</td>
                                 <td>
-
+                                    <a href="{{route('blog.edit',['id'=>$blog->id])}}" ><i class="fa fa-edit fa-2x text-info"></i></a>
+                                    <form action="/admin/blogs/{{ $blog->id }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button style="border: none;" onclick="confirm('Are your sure, your want to delete this blog?') || event.stopImmediatePropagation()"><i class="fa fa-times fa-2x"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
