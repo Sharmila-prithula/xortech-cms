@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="blog-image">
-                <img src="{{ asset('images/blogs/'.$image)}}" alt="blog image" class="w-100 img-fluid">
+                <img src="{{asset('images/blogs/'.$image)}}" alt="blog image" class="w-100 img-fluid">
             </div>
             <div class="blog-post">
                 <p>
@@ -69,7 +69,7 @@
             @foreach($bloglist as $blog)
             <div class="bloglist-item">
                 <div class="card">
-                    <img class="card-img-top" src="{{asset('images/blogs/'.$blog->image)}}" alt="Card image cap">
+                    <img class="card-img-top" src="{{asset('images/blogs/'.$blog->images)}}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{$blog->title}}
                         </h5>

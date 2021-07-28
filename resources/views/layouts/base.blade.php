@@ -69,13 +69,7 @@
                     @auth
                     @if(Auth::user()->utype === 'ADM')
                     <li class="nav-item">
-                        <a class="nav-link" title="My Account" href="#">{{Auth::user()->name}}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" title="Blogs" href="{{ route('admin.blogs')}}">Manage Blogs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" title="Topics" href="{{ route('admin.topics')}}">Topics</a>
+                        <a class="nav-link" title="My Account" href="{{ route('admin.panel')}}">{{Auth::user()->name}}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                     </li>
                     <form id="logout-form" method="POST" action="{{ route('logout') }}">
                         @csrf

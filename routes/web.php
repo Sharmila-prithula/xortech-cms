@@ -11,7 +11,11 @@ use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogsController;
+use App\Http\Livewire\Admin\AdminAbout;
+use App\Http\Livewire\Admin\AdminAddAbout;
+use App\Http\Livewire\Admin\AdminEditAbout;
 use App\Http\Livewire\Admin\AdminEditTopic;
+use App\Http\Livewire\Admin\AdminPanel;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,17 +35,19 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 });
 
 Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
-    Route::get('/admin/dashboard',AdminDashboardComponent::class)->name('admin.dashboard');
+    Route::get('/admin/panel',AdminPanel::class)->name('admin.panel');
     Route::get('/admin/topics',AdminTopics::class)->name('admin.topics');
     Route::get('/admin/topics/add',AdminAddTopics::class)->name('admin.addtopics');
+    Route::get('/admin/topics/edit/{topic_slug}',AdminEditTopic::class)->name('admin.edittopic');
     Route::get('/admin/blogs',AdminBlogs::class)->name('admin.blogs');
     Route::get('/admin/blogs/create', [BlogsController::class, 'create'])->name('blog.create');
     Route::post('/admin/blogs/store', [BlogsController::class, 'store'])->name('blog.store');
     Route::delete('/admin/blogs/{id}', [BlogsController::class, 'destroy'])->name('blog.destroy');
     Route::get('/admin/blogs/edit/{id}',[BlogsController::class, 'edit'])->name('blog.edit');
     Route::post('/admin/blogs/edit',[BlogsController::class, 'update'])->name('blog.update');
-    Route::get('/admin/topics/edit/{topic_slug}',AdminEditTopic::class)->name('admin.edittopic');
-
+    Route::get('/admin/about',AdminAbout::class)->name('admin.about');
+    Route::get('/admin/about/add',AdminAddAbout::class)->name('admin.addabout');
+    Route::get('/admin/about/edit/{about_slug}',AdminEditAbout::class)->name('admin.editabout');
 });
 
 

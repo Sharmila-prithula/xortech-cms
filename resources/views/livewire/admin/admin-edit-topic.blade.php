@@ -22,6 +22,7 @@
                                 <label for="" class="col-md-4 control-label">Name</label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="Name" class="form-control input-md" wire:model="name" wire:keyup="generateSlug">
+                                    @error('name') <p class="text-danger">{{$message}}</p>@enderror
                                 </div> 
                             </div>
 
@@ -32,12 +33,13 @@
                                         http://127.0.0.1:8000/
                                     </span>
                                     <input type="text" placeholder="Slug" class="form-control input-md" wire:model="slug">
+                                    @error('slug') <p class="text-danger">{{$message}}</p>@enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-md-4 control-label"></label>
                                 <div class="col-md-4">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary" onclick="confirm('Are your sure, your want to update this topic?') || event.stopImmediatePropagation()">Update</button>
                                 </div>
                             </div>
                         </form>

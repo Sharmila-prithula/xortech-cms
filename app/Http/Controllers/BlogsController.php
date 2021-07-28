@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class BlogsController extends Controller
 {
@@ -89,7 +90,8 @@ class BlogsController extends Controller
     public function edit($id)
     {
         $blog=Blog::find($id);
-        return view('livewire.admin.admin-edit-blogs',['blog'=>$blog]);
+        $topics= Topic::all();
+        return view('livewire.admin.admin-edit-blogs',['blog'=>$blog, 'topics'=>$topics]);
     }
 
     /**
@@ -103,19 +105,20 @@ class BlogsController extends Controller
     {
         $request->validate([
             'image'=>'required|image|mimes:jpeg,png,gif,svg|max:2048',
-            'title'=>'unique:blogs',
         ]);
 
         $blog=Blog::find($request->id);
         $blog->title=$request->title;
         $blog->slug = Str::slug($blog->title, '-');
         $blog->content=$request->content;
+        $blog->images=$request->image;
         if($request->hasFile('image')){
             $image = $request->file('image');
             $images = time().'.'.$image->extension();
             $image->move(public_path('images/blogs'),$images);
             $blog->images =$images;
         };
+        $blog->topics()->attach($request->topics);
         $blog->save();
         return redirect('/admin/blogs')->with('message', 'Blog updated successfully');
     }

@@ -25,7 +25,7 @@ class DetailBlog extends Component
 
         $this->title = $data->title;
         $this->content = $data->content;
-        $this->image =$data->image;
+        $this->image =$data->images;
         $this->date = $data->created_at;
     }
     public function render()

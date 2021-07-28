@@ -14,8 +14,19 @@ class AdminAddTopics extends Component
     public function generateSlug(){
         $this->slug=Str::slug($this->name,'-');
     }
+    public function updated($fields)
+    {
+        $this->validateOnly($fields,[
+            'name' => 'required',
+            'slug' => 'required|unique:topicss'
+        ]);
+    }
     public function addTopic()
     {
+        $this->validate([
+            'name' => 'required',
+            'slug' => 'required|unique:topics'
+        ]);
         $topic=new Topic();
         $topic->name=$this->name;
         $topic->slug=$this->slug;

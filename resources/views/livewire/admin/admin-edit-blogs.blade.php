@@ -35,6 +35,14 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label>Select Options</label>
+                                <select class="form-control topics" name="topics[]" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                                    @foreach($topics as $topic)
+                                    <option value="{{$topic->id}}">{{$topic->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="" class="col-md-4 control-label">Blog Image</label>
                                 <div class="col-md-4">
                                     <input type="file" class="input-file" value="{{$blog->images}}" name="image">

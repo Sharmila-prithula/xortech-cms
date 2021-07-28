@@ -22,6 +22,7 @@
                                 <label for="" class="col-md-4 control-label">Name</label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="Name" class="form-control input-md" wire:model="name" wire:keyup="generateSlug">
+                                    @error('name') <p class="text-danger">{{$message}}</p>@enderror
                                 </div> 
                             </div>
 
@@ -32,6 +33,7 @@
                                         http://127.0.0.1:8000/
                                     </span>
                                     <input type="text" placeholder="Slug" class="form-control input-md" wire:model="slug">
+                                    @error('slug') <p class="text-danger">{{$message}}</p>@enderror
                                 </div>
                             </div>
                             <div class="form-group">
