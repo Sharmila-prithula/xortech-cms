@@ -6,10 +6,10 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-6">
-                                All About Us
+                                All Showcase
                             </div>
                             <div class="col-md-6">
-                                <a href="{{route('admin.addabout')}}" class="btn btn-success">Add New About us</a>
+                                <a href="{{route('admin.addshowcase')}}" class="btn btn-success">Add New Showcase</a>
                             </div>
                         </div>
                     </div>
@@ -25,28 +25,26 @@
                                 <th>title</th>
                                 <th>Slug</th>
                                 <th>Date</th>
-                                <th>Status</th>
                                 <th>Content</th>
                                 <th>Image</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($abouts as $about)
+                            @foreach($showcases as $showcase)
                             <tr>
-                                <td>{{ $about->id }}</td>
-                                <td>{{ $about->title }}</td>
-                                <td><a class="text-indigo-600 hover-text-indigo-900" target="_self" href="{{URL::to('/'.$about->slug)}}">
-                                        {{$about->slug}}
+                                <td>{{ $showcase->id }}</td>
+                                <td>{{ $showcase->title }}</td>
+                                <td><a class="text-indigo-600 hover-text-indigo-900" target="_self" href="{{URL::to('/'.$showcase->slug)}}">
+                                        {{$showcase->slug}}
                                     </a>
                                 </td>
-                                <td>{{$about->created_at}}</td>
-                                <td>{{ $about->status }} <button class="btn btn-primary" wire:click.prevent="changeStatus({{$about->id}})">Change status</button></td>
-                                <td>{!! substr_replace($about->content, "...", 50) !!}</td>
-                                <td><img src="{{asset('images/about/'.$about->image)}}" width="60" /></td>
+                                <td>{{$showcase->created_at}}</td>
+                                <td>{!! substr_replace($showcase->content, "...", 50) !!}</td>
+                                <td><img src="{{asset('images/showcase/'.$showcase->image)}}" width="60" /></td>
                                 <td>
-                                    <a href="{{route('admin.editabout',['about_slug'=>$about->slug])}}"><i class="fa fa-edit fa-2x"></i></a>
-                                    <a href="#" onclick="confirm('Are your sure, your want to delete this about us?') || event.stopImmediatePropagation()" wire:click.prevent="deleteAbout({{$about->id}})"><i class="fa fa-times fa-2x"></i></a>
+                                    <a href="{{route('admin.editshowcase',['showcase_slug'=>$showcase->slug])}}"><i class="fa fa-edit fa-2x"></i></a>
+                                    <a href="#" onclick="confirm('Are your sure, your want to delete this showcase us?') || event.stopImmediatePropagation()" wire:click.prevent="deleteShowcase({{$showcase->id}})"><i class="fa fa-times fa-2x"></i></a>
                                 </td>
                             </tr>
                             @endforeach

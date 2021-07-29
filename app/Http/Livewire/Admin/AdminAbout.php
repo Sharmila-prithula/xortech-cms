@@ -12,6 +12,13 @@ class AdminAbout extends Component
         $about->delete();
         session()->flash('message','About us has been deleted successfully');
     }
+    public function changeStatus($id){
+        $about = About::find($id);
+        $about->status = !$about->status;
+
+        $about->save();
+
+    }
     public function render()
     {
         $abouts=About::all();

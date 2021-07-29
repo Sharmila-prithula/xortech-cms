@@ -46,7 +46,7 @@
                                         {{$blog->slug}}
                                     </a>
                                 </td>
-                                <td>{!! $blog->content !!}</td>
+                                <td>{!! substr_replace($blog->content, "...", 50) !!}</td>
                                 <td>{{$blog->created_at}}</td>
                                 <td>
                                     <a href="{{route('blog.edit',['id'=>$blog->id])}}" ><i class="fa fa-edit fa-2x text-info"></i></a>

@@ -6,7 +6,13 @@
 
 
 /* Banner Part Starts */
-
+.readmore{
+        display: block;
+        width: 100px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+}
 #banner {
     padding-top: 177px;
     padding-bottom: 69px;

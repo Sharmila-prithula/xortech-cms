@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Topic;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -41,31 +39,26 @@ class BlogsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|unique:blogs',
+            'content' => 'required',
+            'image'=>'required|image|mimes:jpeg,png,gif,svg|max:2048',
+        ]);
 
-            $request->validate([
-                'title' => 'required|unique:blogs',
-                'slug' => 'required|unique:blogs',
-                'content' => 'required',
-                'image'=>'required|image|mimes:jpeg,png,gif,svg|max:2048',
-            ]);
-
-            $blog= new Blog;
-            $blog->title =$request->title;
-            $blog->slug = Str::slug($blog->title, '-');
-
-            $blog->content =$request->content;
-            if($request->hasFile('image')){
-                $image = $request->file('image');
-                $images = time().'.'.$image->extension();
-                $image->move(public_path('images/blogs'),$images);
-                $blog->images =$images;
-                $blog->save();
-            };
+        $blog= new Blog();
+        $blog->title =$request->title;
+        $blog->slug = Str::slug($blog->title, '-');
+        $blog->content =$request->content;
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $images = time().'.'.$image->extension();
+            $image->move(public_path('images/blogs'),$images);
+            $blog->images = $images;
+        };
             
+        $blog->topics()->attach($request->topics);
 
-            $blog->topics()->attach($request->topics);
-
-            $blog->save();
+        $blog->save();
         
         return redirect('/admin/blogs/create')->with('message', 'Blog created successfully');
     }
@@ -104,6 +97,8 @@ class BlogsController extends Controller
     public function update(Request $request)
     {
         $request->validate([
+            'title'=>['required', Rule::unique('blogs','title')->ignore($request->id)],
+            'content' => 'required',
             'image'=>'required|image|mimes:jpeg,png,gif,svg|max:2048',
         ]);
 

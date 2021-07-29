@@ -6,10 +6,10 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-6">
-                                All About Us
+                                All Services
                             </div>
                             <div class="col-md-6">
-                                <a href="{{route('admin.addabout')}}" class="btn btn-success">Add New About us</a>
+                                <a href="{{route('admin.addservice')}}" class="btn btn-success">Add New Services</a>
                             </div>
                         </div>
                     </div>
@@ -22,31 +22,27 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>title</th>
+                                <th>Title</th>
                                 <th>Slug</th>
-                                <th>Date</th>
-                                <th>Status</th>
                                 <th>Content</th>
-                                <th>Image</th>
+                                <th>Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($abouts as $about)
+                            @foreach($services as $service)
                             <tr>
-                                <td>{{ $about->id }}</td>
-                                <td>{{ $about->title }}</td>
-                                <td><a class="text-indigo-600 hover-text-indigo-900" target="_self" href="{{URL::to('/'.$about->slug)}}">
-                                        {{$about->slug}}
+                                <td>{{ $service->id }}</td>
+                                <td>{{ $service->title }}</td>
+                                <td><a class="text-indigo-600 hover-text-indigo-900" target="_self" href="{{URL::to('/'.$service->slug)}}">
+                                        {{$service->slug}}
                                     </a>
                                 </td>
-                                <td>{{$about->created_at}}</td>
-                                <td>{{ $about->status }} <button class="btn btn-primary" wire:click.prevent="changeStatus({{$about->id}})">Change status</button></td>
-                                <td>{!! substr_replace($about->content, "...", 50) !!}</td>
-                                <td><img src="{{asset('images/about/'.$about->image)}}" width="60" /></td>
+                                <td>{!! substr_replace($service->content, "...", 50) !!}</td>
+                                <td>{{$service->created_at}}</td>
                                 <td>
-                                    <a href="{{route('admin.editabout',['about_slug'=>$about->slug])}}"><i class="fa fa-edit fa-2x"></i></a>
-                                    <a href="#" onclick="confirm('Are your sure, your want to delete this about us?') || event.stopImmediatePropagation()" wire:click.prevent="deleteAbout({{$about->id}})"><i class="fa fa-times fa-2x"></i></a>
+                                    <a href="{{route('admin.editservice',['service_id'=>$service->id])}}"><i class="fa fa-edit fa-2x"></i></a>
+                                    <a href="#" onclick="confirm('Are your sure, your want to delete this service?') || event.stopImmediatePropagation()" wire:click.prevent="deleteservice({{$service->id}})"><i class="fa fa-times fa-2x"></i></a>
                                 </td>
                             </tr>
                             @endforeach

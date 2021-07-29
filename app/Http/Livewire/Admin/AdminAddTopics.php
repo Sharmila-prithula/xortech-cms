@@ -18,7 +18,7 @@ class AdminAddTopics extends Component
     {
         $this->validateOnly($fields,[
             'name' => 'required',
-            'slug' => 'required|unique:topicss'
+            'slug' => 'required|unique:topics'
         ]);
     }
     public function addTopic()

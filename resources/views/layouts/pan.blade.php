@@ -53,6 +53,18 @@
                             <span class="menu-title">Manage About us</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.service')}}">
+                            <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
+                            <span class="menu-title">Manage Services</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.showcase')}}">
+                            <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
+                            <span class="menu-title">Manage Showcase</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- partial -->

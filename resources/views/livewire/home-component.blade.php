@@ -86,18 +86,15 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="about-text">
-                    <h3>about us </h3>
-                    <h3>Inspired to make a difference.</h3>
-                    <p>As a creative team of individuals, we have a vision for creating a positive impact throughout communities. Our aim is beyond monetary, as an innovation-centric company we are motivated to support individuals and other businesses
-                        to accelerate and push the limits of innovation to bring promising change within the system.
-                    </p>
+                    <h3>{{ $about->title}} </h3>
+                    <p>{!! $about->content !!}</p>
 
                 </div>
 
             </div>
             <div class="col-lg-6 mt-5 pt-5">
                 <div class="about-image pl-4">
-                    <img src="images/abot.png" alt="about Image">
+                    <img src="{{asset('images/about/'.$about->image)}}" class="img-fluid w-100" alt="about Image">
                 </div>
             </div>
         </div>
@@ -115,6 +112,7 @@
 <section id="PortFolio">
     <div class="container">
         <div class="row portfolio ">
+            @foreach($services as $service)
             <div class="col-lg-4 col-md-2">
                 <div class="card">
                     <div class="card-body text-center">
@@ -122,92 +120,13 @@
                             <i class="flaticon-031-light-bulb"></i>
                         </div>
                         <div class="portfolio-text">
-                            <h3>Design thinking</h3>
-                            <p>
-                                We use brainstorming and mind mapping as major techniques to identify problems and develop creative solutions to facilitate innovation.
-                            </p>
+                            <h3>{{ $service->title}}</h3>
+                            <p>{!! $service->content !!}</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-2 ">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <div class="port-icon">
-
-                            <img src="images/ui.svg">
-
-                        </div>
-                        <div class="portfolio-text">
-                            <h3>UX design</h3>
-                            <p>Creating a relevant and user-friendly experience for the right target audience by combining design trends and product development strategies.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-lg-4 col-md-2">
-                <div class="port-rectangle">
-
-                </div>
-                <div class="card">
-                    <div class="card-body text-center">
-                        <div class="port-icon">
-                            <i class="flaticon-030-coding"></i>
-                        </div>
-                        <div class="portfolio-text">
-                            <h3>Software development</h3>
-                            <p> Building an efficient and high functioning system requires the right technology blends and effective programming with the finest solution architecture.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row portf  mt-5">
-            <div class="col-lg-4  col-md-2">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <div class="port-icon">
-                            <img src="images/promotion.svg">
-                        </div>
-                        <div class="portfolio-text">
-                            <h3>Digital Marketing</h3>
-                            <p> Reaching and impacting the right audience and engaging them with campaigns using effective digital marketing strategies.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-2">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <div class="port-icon">
-                            <i class="flaticon-034-bar-chart-1"></i>
-                        </div>
-                        <div class="portfolio-text">
-                            <h3>Business Analytics</h3>
-                            <p>Providing expert guidance and in-depth business analysis while identifying problems in the existing system and proposing the optimum solution.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-2">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <div class="port-icon">
-                            <img src="images/teamwork.svg">
-                        </div>
-                        <div class="portfolio-text">
-                            <h3>Team Building</h3>
-                            <p> Outsourcing to secure the help of the most talented individuals, beyond any regional barriers, to ensure cost effective results with quality.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
 
     </div>
@@ -229,97 +148,24 @@
         </div>
         <div class="workShowcase">
             <div class="row works responsive">
-
+        @foreach($showcases as $showcase)
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="work-overlay">
                             <div class="workShowcase-text">
-                                <h3>Dimeru</h3>
-                                <p>Looking for job, trying to connect to employer and make social network? Dimeru is the right place you are looking for.</p>
-
+                                <h3>{{ $showcase->title}}</h3>
+                                <p>{!! $showcase->content !!}</p>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="work-img">
-                                <!-- **************************Change Images************************************ -->
-                                <img src="images/dimeru.jpg" class="img-fluid w-100" alt="work">
+                                <img src="{{asset('images/showcase/'.$showcase->image)}}" class="img-fluid w-100" alt="work">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="work-overlay">
-                            <div class="workShowcase-text">
-                                <h3>Geekybite</h3>
-                                <p>Love blogging? Geeky byte gives you all the facilities you need for blogging.</p>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="work-img">
-                                <img src="images/work1.png" class="img-fluid w-100" alt="work">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="work-overlay">
-                            <div class="workShowcase-text">
-                                <!-- *************************changes eduish and its content and image******************************** -->
-                                <h3>Eduish</h3>
-                                <p>
-                                    This is an educational website build to make the school mangement easier.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="work-img">
-                                <img src="images/eduish.jpg" class="img-fluid w-100" alt="work">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="work-overlay">
-                            <div class="workShowcase-text">
-
-                                <h3>Geekybite</h3>
-                                <p>Love blogging? Geeky byte gives you all the facilities you need for blogging.</p>
-
-
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="work-img">
-                                <img src="images/work2.png" class="img-fluid w-100" alt="work">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="work-overlay">
-                            <div class="workShowcase-text">
-
-                                <h3>GeekyBite</h3>
-                                <p>Love blogging? Geeky byte gives you all the facilities you need for blogging.</p>
-
-
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="work-img">
-                                <img src="images/work2.png" class="img-fluid w-100" alt="work">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+            @endforeach
             </div>
-
         </div>
 
     </div>
@@ -461,6 +307,7 @@
             </div>
         </div>
 
+
         @foreach($bloglist as $blog)
         <div class="blog-item current firts-blog">
             <!--************ chnage  ffirst-blog******************-->
@@ -473,9 +320,10 @@
                     </div>
                     <div class="blog-para">
                         <p>
-                            {!! $blog->content !!}<a class="text-indigo-600 hover-text-indigo-900" target="_self" href="{{URL::to('/'.$blog->slug)}}">
-                                <span class="readMore ">...Read More </span></a>
+                            {!! substr_replace($blog->content, "...", 150) !!}<a class="text-indigo-600 hover-text-indigo-900" target="_self" href="{{URL::to('/'.$blog->slug)}}">
+                                <span class="readMore ">Read More </span></a>
                         </p>
+
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -490,7 +338,6 @@
         <div>
 
         </div>
-
     </div>
 
 </section>
